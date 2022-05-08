@@ -1,18 +1,24 @@
 package com.studentmanagement.studentmanagementproject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -20,7 +26,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -48,10 +63,10 @@ public class ScoreSceneController implements Initializable {
     private TextField courseNameField;
 
     @FXML
-    private Button editBtn;
+    private Button updateScoreBtn;
 
     @FXML
-    private Button updateScoreBtn;
+    private Button exportBtn;
 
     @FXML
     private Button reloadBtn;
@@ -69,6 +84,7 @@ public class ScoreSceneController implements Initializable {
         delCourseBtnClicked();
         updateScoreBtnCLicked();
         reloadBtnClicked();
+        exportBtnClicked();
     }
 
     public void createTableViewScore() {
@@ -285,6 +301,64 @@ public class ScoreSceneController implements Initializable {
                 showTableScore(choiceBoxCourse.getValue() + "");
             }
         });
+    }
+
+    static int fileNum = 1;
+
+    public void exportBtnClicked() {
+
+        exportBtn.setOnAction((t) -> {
+            try {
+                DirectoryChooser directoryChooser = new DirectoryChooser();
+                File file = directoryChooser.showDialog(new Stage());
+                System.out.println(file.getAbsolutePath());
+
+                String filename = file.getAbsolutePath() + "\\ExportScoreTable-" + (fileNum++) + ".xls";
+                HSSFWorkbook workbook = new HSSFWorkbook();
+                HSSFSheet sheet = workbook.createSheet("FirstSheet");
+
+                HSSFRow rowhead = sheet.createRow((short) 0);
+                rowhead.createCell(0).setCellValue("Course Name");
+                rowhead.createCell(1).setCellValue("Roll Number");
+                rowhead.createCell(2).setCellValue("Full Name");
+                rowhead.createCell(3).setCellValue("Test Score");
+                rowhead.createCell(4).setCellValue("Midle Exam Score");
+                rowhead.createCell(5).setCellValue("Final Exam Score");
+                rowhead.createCell(6).setCellValue("GPA");
+
+                HSSFRow row = sheet.createRow((short) 1);
+                row.createCell(0).setCellValue("1");
+                row.createCell(1).setCellValue("Sankumarsingh");
+                row.createCell(2).setCellValue("India");
+                row.createCell(3).setCellValue("sankumarsingh@gmail.com");
+
+                int i = 1;
+                for (Course c : DatabaseHandle.getAllCourse()) {
+                    HSSFRow row2 = sheet.createRow((short) i++);
+                    for (ScoreDetail s : DatabaseHandle.getScoreOfCourse(c.getCode())) {
+                        row2.createCell(0).setCellValue(c.getName());
+                        HSSFRow row3 = sheet.createRow((short) i++);
+                        row3.createCell(1).setCellValue(s.getRollNumber());
+                        row3.createCell(2).setCellValue(s.getFullName());
+                        row3.createCell(3).setCellValue(s.getTestScore());
+                        row3.createCell(4).setCellValue(s.getMidleExamScore());
+                        row3.createCell(5).setCellValue(s.getFinalExamScore());
+                        row3.createCell(6).setCellValue((s.getTestScore() + (s.getMidleExamScore() * 2) + (s.getFinalExamScore() * 3)) / 6);
+                    }
+                }
+
+                FileOutputStream fileOut = new FileOutputStream(filename);
+                workbook.write(fileOut);
+                fileOut.close();
+                workbook.close();
+
+                System.out.println("Your excel file has been generated!");
+            } catch (Exception e) {
+                return;
+            }
+        }
+        );
+
     }
 
 }

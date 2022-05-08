@@ -396,7 +396,5 @@ public class DatabaseHandle {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(getScoreOfCourse("MAD"));
-    }
+    
 }
