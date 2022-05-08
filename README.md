@@ -1,3 +1,2 @@
 # StudentScoreManagement
-Project build Netbeans13\n
-JDK 17.0.1
+Project build Netbeans13 / JDK 17.0.1 / SDK 18
