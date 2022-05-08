@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPaneStage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentmanagement.studentmanagementproject.MainController">
+   <center>
+      <BorderPane fx:id="borderPaneMain" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <ScrollPane fx:id="ScrollPaneStudent" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <AnchorPane prefHeight="120.0" prefWidth="686.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="searchField" layoutX="196.0" layoutY="72.0" prefHeight="26.0" prefWidth="293.0" promptText="Search" />
+                  <Label layoutX="236.0" layoutY="22.0" text="STUDENT INFORMATION">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="choiceBoxSearch" layoutX="506.0" layoutY="71.0" prefHeight="26.0" prefWidth="130.0" />
+                  <Button fx:id="reloadBtn" layoutX="654.0" layoutY="73.0" mnemonicParsing="false" text="Reload" />
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </center>
+   <right>
+      <AnchorPane fx:id="AnchorPaneInput" prefHeight="660.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="64.0" layoutY="33.0" text="ADD A STUDENT" textFill="#8c8c8c">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="90.0" text="Full Name" />
+            <TextField fx:id="nameField" layoutX="76.0" layoutY="86.0" prefHeight="26.0" prefWidth="160.0" />
+            <Label layoutX="14.0" layoutY="132.0" text="Class" />
+            <TextField fx:id="classNameField" layoutX="76.0" layoutY="128.0" prefHeight="26.0" prefWidth="159.0" />
+            <Label layoutX="14.0" layoutY="172.0" text="Major" />
+            <TextField fx:id="majorField" layoutX="76.0" layoutY="167.0" prefHeight="26.0" prefWidth="159.0" />
+            <Label layoutX="14.0" layoutY="210.0" text="Birthday" />
+            <TextField fx:id="birthdayField" layoutX="77.0" layoutY="205.0" prefHeight="26.0" prefWidth="159.0" promptText="dd/MM/yyyy" />
+            <Label layoutX="16.0" layoutY="248.0" text="Email" />
+            <TextField fx:id="meowField" layoutX="77.0" layoutY="243.0" prefHeight="26.0" prefWidth="159.0" promptText="an@example.com" />
+            <Label layoutX="16.0" layoutY="286.0" text="Phone" />
+            <TextField fx:id="phoneNumberField" layoutX="77.0" layoutY="281.0" prefHeight="26.0" prefWidth="159.0" promptText="0123456789" />
+            <Label layoutX="15.0" layoutY="323.0" text="Gender" />
+            <RadioButton fx:id="radioGenderMale" layoutX="38.0" layoutY="351.0" mnemonicParsing="false" selected="true" text="Male" />
+            <RadioButton fx:id="radioGenderFemale" layoutX="102.0" layoutY="351.0" mnemonicParsing="false" text="Female" />
+            <RadioButton fx:id="radioGenderUnknown" layoutX="178.0" layoutY="351.0" mnemonicParsing="false" text="Other" />
+            <Label layoutX="15.0" layoutY="375.0" text="Course" />
+            <ScrollPane fx:id="ScrollPaneCourse" layoutX="14.0" layoutY="393.0" prefHeight="147.0" prefWidth="222.0" />
+            <Button fx:id="addStudentBtn" layoutX="73.0" layoutY="567.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="ADD" />
+            <Button fx:id="delBtn" layoutX="129.0" layoutY="610.0" mnemonicParsing="false" text="DELETE" />
+            <Button fx:id="updateBtn" layoutX="73.0" layoutY="610.0" mnemonicParsing="false" text="EDIT" />
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <VBox prefHeight="660.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: #5b5b5b;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="studentInfoBtn" alignment="CENTER" contentDisplay="TOP" prefHeight="100.0" prefWidth="100.0" text="Student Info" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-student-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreBtn" alignment="CENTER" contentDisplay="TOP" prefHeight="100.0" prefWidth="100.0" text="Course Score" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons8-score-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

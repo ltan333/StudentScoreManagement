@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="250.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.studentmanagement.studentmanagementproject.PopupUpdateScoreController">
+   <children>
+      <Label fx:id="label" layoutX="70.0" layoutY="39.0" text="UPDATE SCORE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="91.0" text="Full Name" />
+      <TextField fx:id="nameField" disable="true" layoutX="78.0" layoutY="87.0" />
+      <Label layoutX="14.0" layoutY="131.0" text="Course" />
+      <Label layoutX="14.0" layoutY="194.0" text="Test Score" />
+      <Label layoutX="14.0" layoutY="227.0" text="Midle Exam Score" />
+      <Label layoutX="14.0" layoutY="262.0" text="Final Exam Score" />
+      <TextField fx:id="courseField" disable="true" layoutX="77.0" layoutY="126.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="testScoreField" layoutX="171.0" layoutY="187.0" prefHeight="26.0" prefWidth="55.0" />
+      <TextField fx:id="midleScoreField" layoutX="171.0" layoutY="222.0" prefHeight="26.0" prefWidth="55.0" />
+      <TextField fx:id="finalExamScoreField" layoutX="171.0" layoutY="257.0" prefHeight="26.0" prefWidth="55.0" />
+      <Button fx:id="updateBtn" layoutX="69.0" layoutY="332.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="UPDATE" />
+   </children>
+</AnchorPane>

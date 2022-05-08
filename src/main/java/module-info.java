@@ -1,0 +1,9 @@
+module com.studentmanagement.studentmanagementproject {
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.base;
+    requires java.sql;
+
+    opens com.studentmanagement.studentmanagementproject to javafx.fxml;
+    exports com.studentmanagement.studentmanagementproject;
+}

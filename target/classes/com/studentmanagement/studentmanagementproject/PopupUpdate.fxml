@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentmanagement.studentmanagementproject.UpdateStudentController">
+   <children>
+      <Label layoutX="14.0" layoutY="90.0" text="Full Name" />
+      <TextField fx:id="nameFieldUpdate" layoutX="76.0" layoutY="86.0" prefHeight="26.0" prefWidth="160.0" />
+      <Label layoutX="14.0" layoutY="132.0" text="Class" />
+      <TextField fx:id="classNameFieldUpdate" layoutX="76.0" layoutY="128.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="14.0" layoutY="210.0" text="Birthday" />
+      <TextField fx:id="birthdayFieldUpdate" layoutX="77.0" layoutY="205.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="16.0" layoutY="248.0" text="Email" />
+      <TextField fx:id="meowFieldUpdate" layoutX="77.0" layoutY="243.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="16.0" layoutY="286.0" text="Phone" />
+      <TextField fx:id="phoneNumberFieldUpdate" layoutX="77.0" layoutY="281.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="15.0" layoutY="323.0" text="Gender" />
+      <RadioButton fx:id="radioGenderMaleUpdate" layoutX="32.0" layoutY="347.0" mnemonicParsing="false" selected="true" text="Male" />
+      <RadioButton fx:id="radioGenderFemaleUpdate" layoutX="98.0" layoutY="347.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="radioGenderUnknownUpdate" layoutX="177.0" layoutY="347.0" mnemonicParsing="false" text="Other" />
+      <Label layoutX="15.0" layoutY="373.0" text="Course" />
+      <ScrollPane fx:id="ScrollPaneCourseUpdate" layoutX="14.0" layoutY="391.0" prefHeight="147.0" prefWidth="222.0" />
+      <Label layoutX="14.0" layoutY="172.0" text="Major" />
+      <TextField fx:id="majorFieldUpdate" layoutX="76.0" layoutY="167.0" prefHeight="26.0" prefWidth="159.0" />
+      <Button fx:id="updateBtnUpdate" layoutX="74.0" layoutY="559.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="UPDATE" />
+      <Label fx:id="label" layoutX="9.0" layoutY="37.0" text="UPDATE STUDENT INFOMATION">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
