@@ -18,37 +18,6 @@ public class DatabaseHandle {
     private static final String connectionUrl = "jdbc:sqlserver://localhost;databaseName=" + dbName + ";integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
     private static final String userName = "sa";
     private static final String pass = "1234563";
-    private static final String InitQuery = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='students' and xtype='U')\n"
-            + "    CREATE TABLE students (\n"
-            + "		rollnumber varchar(10) PRIMARY KEY,\n"
-            + "        name varchar(50) not null,\n"
-            + "		birthday varchar(15) not null,\n"
-            + "		class varchar(50) not null,\n"
-            + "		major varchar(50) not null,\n"
-            + "		gender int not null,\n"
-            + "		email varchar(50) not null,\n"
-            + "		phone varchar(12) not null\n"
-            + "    )\n"
-            + "GO\n"
-            + "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='courses' and xtype='U')\n"
-            + "    CREATE TABLE courses (\n"
-            + "		codeCourse varchar(10) PRIMARY KEY,\n"
-            + "		name varchar(50) not null\n"
-            + "    )\n"
-            + "GO\n"
-            + "\n"
-            + "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='score' and xtype='U')\n"
-            + "    CREATE TABLE score (\n"
-            + "		codeCourse varchar(10) not null,\n"
-            + "		rollnumber varchar(10) not null,\n"
-            + "		testScore int,\n"
-            + "		midleExamScore int,\n"
-            + "		finalExamScore int,\n"
-            + "		FOREIGN KEY (codeCourse) REFERENCES courses(codeCourse),\n"
-            + "		FOREIGN KEY (rollnumber) REFERENCES students(rollnumber),\n"
-            + "		PRIMARY KEY (codeCourse,rollnumber)\n"
-            + "    )\n"
-            + "GO";
 
     public static Connection getConnection() {
         try {
@@ -396,5 +365,7 @@ public class DatabaseHandle {
         }
     }
 
-    
+    public static void main(String[] args) {
+        System.out.println("á");
+    }
 }
