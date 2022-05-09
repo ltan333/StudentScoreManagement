@@ -1,6 +1,6 @@
 # StudentScoreManagement
 Project build Netbeans13 / JDK 17.0.1 / SDK 18 
-# Create Database to RUN
+# SETUP DB
 Set DB name "TestDB"  
   
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='students' and xtype='U')   
