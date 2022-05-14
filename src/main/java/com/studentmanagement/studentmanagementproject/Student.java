@@ -107,7 +107,7 @@ public class Student {
         this.meow = meow;
     }
 
-    public String getGenderString() {
+    public String getGender() {
         switch (this.gender) {
             case 0:
                 return "Female";
@@ -118,7 +118,7 @@ public class Student {
         }
     }
     
-    public int getGender(){
+    public int getGenderNum(){
         return this.gender;
     }
 

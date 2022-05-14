@@ -82,13 +82,13 @@ public class UpdateStudentController implements Initializable {
         radioGenderFemaleUpdate.setToggleGroup(genderRadioGroup);
         radioGenderMaleUpdate.setToggleGroup(genderRadioGroup);
         radioGenderUnknownUpdate.setToggleGroup(genderRadioGroup);
-        if (DataHolder.student.getGender() == 0) {
+        if (DataHolder.student.getGenderNum() == 0) {
             radioGenderFemaleUpdate.setSelected(true);
         }
-        if (DataHolder.student.getGender() == 1) {
+        if (DataHolder.student.getGenderNum() == 1) {
             radioGenderMaleUpdate.setSelected(true);
         }
-        if (DataHolder.student.getGender() == 2) {
+        if (DataHolder.student.getGenderNum() == 2) {
             radioGenderUnknownUpdate.setSelected(true);
         }
     }
@@ -115,7 +115,7 @@ public class UpdateStudentController implements Initializable {
     }
 
     private void createCheckboxCourses() {
-        for (Course course : DatabaseHandle.getAllCourse()) {
+        for (Course course : DBConnection.getAllCourse()) {
             CheckBox checkbox = new CheckBox(course.getCode());
             if (DataHolder.student.getCourses().contains(checkbox.getText())) {
                 checkbox.setSelected(true);
@@ -226,15 +226,15 @@ public class UpdateStudentController implements Initializable {
             }
             System.out.println(addCourse);
 
-            if (DatabaseHandle.updateInfoStudent(s)) {
+            if (DBConnection.updateInfoStudent(s)) {
                 for (String element : delCourse) {
-                    if (!DatabaseHandle.delScoreCourse(s, element)) {
+                    if (!DBConnection.delScoreCourse(s, element)) {
                         flag = true;
                     }
 
                 }
 
-                if (!DatabaseHandle.addScoreTable(s, addCourse)) {
+                if (!DBConnection.addScoreTable(s, addCourse)) {
                     flag = true;
                 }
 

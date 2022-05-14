@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author truon
  */
-public class DatabaseHandle {
+public class DBConnection {
 
     private static final String dbName = "TestDB";
     private static final String connectionUrl = "jdbc:sqlserver://localhost;databaseName=" + dbName + ";integratedSecurity=true;encrypt=true;trustServerCertificate=true;";
@@ -21,7 +21,6 @@ public class DatabaseHandle {
 
     public static Connection getConnection() {
         try {
-//            String url = "jdbc:sqlserver://localhost;databaseName=TestDB;sslProtocol=TLSv1";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection conn = DriverManager.getConnection(connectionUrl, userName, pass);
             return conn;
@@ -31,15 +30,7 @@ public class DatabaseHandle {
             return null;
         }
     }
-
-    public static void init() {
-        Connection conn = getConnection();
-        try {
-
-        } catch (Exception e) {
-        }
-    }
-
+    
     public static ArrayList<Course> getAllCourse() {
         ArrayList<Course> courses = new ArrayList<>();
         Connection conn = getConnection();
@@ -153,7 +144,7 @@ public class DatabaseHandle {
             stament.setString(3, s.getBirthDay());
             stament.setString(4, s.getClassName());
             stament.setString(5, s.getMajor());
-            stament.setInt(6, s.getGender());
+            stament.setInt(6, s.getGenderNum());
             stament.setString(7, s.getMeow());
             stament.setString(8, s.getPhoneNumber());
             stament.executeUpdate();
@@ -281,7 +272,7 @@ public class DatabaseHandle {
             stament.setString(2, s.getClassName());
             stament.setString(3, s.getBirthDay());
             stament.setString(4, s.getMajor());
-            stament.setInt(5, s.getGender());
+            stament.setInt(5, s.getGenderNum());
             stament.setString(6, s.getMeow());
             stament.setString(7, s.getPhoneNumber());
 
@@ -365,7 +356,4 @@ public class DatabaseHandle {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("á");
-    }
 }

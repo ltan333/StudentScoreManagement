@@ -98,7 +98,7 @@ public class PopupUpdateScoreController implements Initializable {
                 return;
             }
             ScoreDetail score = new ScoreDetail(DataHolder.score.getRollNumber(), DataHolder.score.getFullName(), DataHolder.score.getCourseCode(), Tscore, Mscore, Fscore);
-            if (DatabaseHandle.updateScore(score)) {
+            if (DBConnection.updateScore(score)) {
                 CreateMessBox.popupBoxMess("Update Successfully", 1);
             }
 

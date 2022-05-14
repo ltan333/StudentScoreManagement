@@ -127,7 +127,7 @@ public class MainController implements Initializable {
 
     private void createCheckboxCourses() {
         checkboxCourse.clear();
-        for (Course course : DatabaseHandle.getAllCourse()) {
+        for (Course course : DBConnection.getAllCourse()) {
             checkboxCourse.add(new CheckBox(course.getCode()));
         }
     }
@@ -224,7 +224,7 @@ public class MainController implements Initializable {
                 return;
             }
 
-            Student s = new Student(DatabaseHandle.createRollnumber(), InputValidation.setNameFormat(nameField.getText()), birthdayField.getText(), meowField.getText(), whatGenderRadioSelected(), phoneNumberField.getText(), classNameField.getText(), majorField.getText());
+            Student s = new Student(DBConnection.createRollnumber(), InputValidation.setNameFormat(nameField.getText()), birthdayField.getText(), meowField.getText(), whatGenderRadioSelected(), phoneNumberField.getText(), classNameField.getText(), majorField.getText());
             for (CheckBox element : checkboxCourse) {
                 if (element.isSelected()) {
                     System.out.println(element.getText());
@@ -232,7 +232,7 @@ public class MainController implements Initializable {
                 }
             }
 
-            if (DatabaseHandle.addStudentIntoDB(s) && DatabaseHandle.addScoreTable(s, s.getCourses())) {
+            if (DBConnection.addStudentIntoDB(s) && DBConnection.addScoreTable(s, s.getCourses())) {
                 CreateMessBox.popupBoxMess("Add Student Successfully", 1);
                 nameField.setText("");
                 classNameField.setText("");
@@ -254,9 +254,9 @@ public class MainController implements Initializable {
             if (!selected.isEmpty()) {
                 if (CreateMessBox.popupChoose("Are you sure delete " + selected.get(0).getName())) {
                     for (String element : selected.get(0).getCourses()) {
-                        DatabaseHandle.delScoreCourse(selected.get(0), element);
+                        DBConnection.delScoreCourse(selected.get(0), element);
                     }
-                    DatabaseHandle.delAStudent(selected.get(0));
+                    DBConnection.delAStudent(selected.get(0));
                 }
             } else {
                 CreateMessBox.popupBoxMess("Please choose a student!", 2);
@@ -327,13 +327,13 @@ public class MainController implements Initializable {
     }
 
     public void createTableViewAll() {
-        for (Student student : DatabaseHandle.getAllStudent()) {
+        for (Student student : DBConnection.getAllStudent()) {
             tbw.getItems().add(student);
         }
     }
 
     public void createTableViewFind() {
-        for (Student student : DatabaseHandle.getAllStudent()) {
+        for (Student student : DBConnection.getAllStudent()) {
             if (choiceBoxSearch.getSelectionModel().getSelectedIndex() == 0) {
                 if (student.getName().toLowerCase().contains(searchField.getText().toLowerCase())) {
                     tbw.getItems().add(student);

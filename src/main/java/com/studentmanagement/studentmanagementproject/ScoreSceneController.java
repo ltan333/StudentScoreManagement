@@ -149,13 +149,13 @@ public class ScoreSceneController implements Initializable {
     }
 
     public void createTableViewScoreItem(String code) {
-        for (ScoreDetail score : DatabaseHandle.getScoreOfCourse(code)) {
+        for (ScoreDetail score : DBConnection.getScoreOfCourse(code)) {
             tbw.getItems().add(score);
         }
     }
 
     public void createTableViewCourseItem() {
-        for (Course course : DatabaseHandle.getAllCourse()) {
+        for (Course course : DBConnection.getAllCourse()) {
             tbw.getItems().add(course);
         }
     }
@@ -175,7 +175,7 @@ public class ScoreSceneController implements Initializable {
     private void createChoiceBoxSearch() {
         choiceBoxCourse.setValue("Course Table");
         choiceBoxCourse.getItems().add("Course Table");
-        for (Course course : DatabaseHandle.getAllCourse()) {
+        for (Course course : DBConnection.getAllCourse()) {
             choiceBoxCourse.getItems().add(course.getCode());
 
         }
@@ -212,14 +212,14 @@ public class ScoreSceneController implements Initializable {
                 return;
             }
 
-            for (Course c : DatabaseHandle.getAllCourse()) {
+            for (Course c : DBConnection.getAllCourse()) {
                 if (c.getCode().equalsIgnoreCase(courseCodeField.getText())) {
                     CreateMessBox.popupBoxMess("Coure code is exist!", 2);
                     return;
                 }
             }
 
-            if (!DatabaseHandle.addCourse(new Course(courseNameField.getText(), courseCodeField.getText()))) {
+            if (!DBConnection.addCourse(new Course(courseNameField.getText(), courseCodeField.getText()))) {
                 CreateMessBox.popupBoxMess("Add Fail!", 3);
                 return;
             }
@@ -245,7 +245,7 @@ public class ScoreSceneController implements Initializable {
             }
 
             if (CreateMessBox.popupChoose("Are you sure delete?")) {
-                if (DatabaseHandle.delScoreCourse(selected.get(0).getCode()) && DatabaseHandle.delCourse(selected.get(0).getCode())) {
+                if (DBConnection.delScoreCourse(selected.get(0).getCode()) && DBConnection.delCourse(selected.get(0).getCode())) {
                     CreateMessBox.popupBoxMess("Delete Successfully!", 1);
                     showTableCourse();
                     return;
@@ -333,9 +333,9 @@ public class ScoreSceneController implements Initializable {
                 row.createCell(3).setCellValue("sankumarsingh@gmail.com");
 
                 int i = 1;
-                for (Course c : DatabaseHandle.getAllCourse()) {
+                for (Course c : DBConnection.getAllCourse()) {
                     HSSFRow row2 = sheet.createRow((short) i++);
-                    for (ScoreDetail s : DatabaseHandle.getScoreOfCourse(c.getCode())) {
+                    for (ScoreDetail s : DBConnection.getScoreOfCourse(c.getCode())) {
                         row2.createCell(0).setCellValue(c.getName());
                         HSSFRow row3 = sheet.createRow((short) i++);
                         row3.createCell(1).setCellValue(s.getRollNumber());
